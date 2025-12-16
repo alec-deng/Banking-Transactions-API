@@ -41,6 +41,24 @@ public class AccountController {
         return ResponseEntity.ok(response);
     }
 
+    // Deposit funds into an account
+    // POST /api/accounts/deposit
+    @PostMapping("/deposit")
+    public ResponseEntity<TransactionResponse> deposit(
+            @Valid @RequestBody DepositRequest request) {
+        TransactionResponse response = accountService.deposit(request);
+        return ResponseEntity.ok(response);
+    }
+
+    // Withdraw funds from an account
+    // POST /api/accounts/withdraw
+    @PostMapping("/withdraw")
+    public ResponseEntity<TransactionResponse> withdraw(
+            @Valid @RequestBody WithdrawalRequest request) {
+        TransactionResponse response = accountService.withdraw(request);
+        return ResponseEntity.ok(response);
+    }
+
     // Get transaction history for an account
     // GET /api/accounts/{accountId}/transactions
     @GetMapping("/{accountId}/transactions")

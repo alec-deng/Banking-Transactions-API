@@ -1,0 +1,73 @@
+http://localhost:8080/api/accounts
+
+
+create accounts:
+POST
+{
+  "accountHolderName": "Alex",
+  "initialBalance": 10000.00
+}
+{
+  "accountHolderName": "Kevin",
+  "initialBalance": 3000.00
+}
+{
+  "accountHolderName": "Bob",
+  "initialBalance": 0.00
+}
+
+bd05b44a-ed3c-4524-a2ae-709f1b2b1206
+e2d66076-e5a6-4c53-bca3-d1ea7ab8442c
+bf821fa0-e031-42c5-9c0e-e8b68ed26b08
+transfer between accounts:
+POST /transfer
+{
+  "fromAccountId": "AlexAccountId",
+  "toAccountId": "BobAccountId",
+  "amount": 1000.00,
+  "description": "this is a gift"
+}
+{
+  "fromAccountId": "AlexAccountId",
+  "toAccountId": "KevinAccountId",
+  "amount": 3000.00
+}
+{
+  "fromAccountId": "KevinAccountId",
+  "toAccountId": "BobAccountId",
+  "amount": 2000.00,
+  "description": "another gift"
+}
+
+
+deposit:
+POST /deposit
+{
+  "accountId": "KevinAccountId",
+  "amount": 1000
+}
+{
+  "accountId": "BobAccountId",
+  "amount": 2000,
+  "description": "gift"
+}
+
+
+withdraw:
+POST /withdraw
+{
+  "accountId": "AlexAccountId",
+  "amount": 1000
+}
+
+
+get transction history:
+GET /{accountId}/transctions
+
+
+get account details:
+GET /{accountId}
+
+
+get all accounts information:
+GET

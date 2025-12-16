@@ -13,7 +13,7 @@ public class TransferRequest {
     private String toAccountId;
 
     @NotNull(message = "Amount is required")
-    @DecimalMin(value = "0.01", message = "Amount must be greater than 0")
+    @DecimalMin(value = "0.0", inclusive = true, message = "Amount must be greater than 0")
     private BigDecimal amount;
 
     private String description;

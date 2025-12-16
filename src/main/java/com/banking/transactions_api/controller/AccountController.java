@@ -26,8 +26,7 @@ public class AccountController {
     // Create a new account
     // POST /api/accounts
     @PostMapping
-    public ResponseEntity<AccountResponse> createAccount(
-            @Valid @RequestBody CreateAccountRequest request) {
+    public ResponseEntity<AccountResponse> createAccount(@Valid @RequestBody CreateAccountRequest request) {
         AccountResponse response = accountService.createAccount(request);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
@@ -35,8 +34,7 @@ public class AccountController {
     // Transfer funds between accounts
     // POST /api/accounts/transfer
     @PostMapping("/transfer")
-    public ResponseEntity<TransactionResponse> transferFunds(
-            @Valid @RequestBody TransferRequest request) {
+    public ResponseEntity<TransactionResponse> transferFunds(@Valid @RequestBody TransferRequest request) {
         TransactionResponse response = accountService.transferFunds(request);
         return ResponseEntity.ok(response);
     }
@@ -44,8 +42,7 @@ public class AccountController {
     // Deposit funds into an account
     // POST /api/accounts/deposit
     @PostMapping("/deposit")
-    public ResponseEntity<TransactionResponse> deposit(
-            @Valid @RequestBody DepositRequest request) {
+    public ResponseEntity<TransactionResponse> deposit(@Valid @RequestBody DepositRequest request) {
         TransactionResponse response = accountService.deposit(request);
         return ResponseEntity.ok(response);
     }
@@ -53,8 +50,7 @@ public class AccountController {
     // Withdraw funds from an account
     // POST /api/accounts/withdraw
     @PostMapping("/withdraw")
-    public ResponseEntity<TransactionResponse> withdraw(
-            @Valid @RequestBody WithdrawalRequest request) {
+    public ResponseEntity<TransactionResponse> withdraw(@Valid @RequestBody WithdrawalRequest request) {
         TransactionResponse response = accountService.withdraw(request);
         return ResponseEntity.ok(response);
     }
@@ -62,8 +58,7 @@ public class AccountController {
     // Get transaction history for an account
     // GET /api/accounts/{accountId}/transactions
     @GetMapping("/{accountId}/transactions")
-    public ResponseEntity<List<TransactionResponse>> getTransactionHistory(
-            @PathVariable String accountId) {
+    public ResponseEntity<List<TransactionResponse>> getTransactionHistory(@PathVariable String accountId) {
         List<TransactionResponse> transactions = 
             accountService.getTransactionHistory(accountId);
         return ResponseEntity.ok(transactions);
@@ -72,8 +67,7 @@ public class AccountController {
     // Get account details by ID
     // GET /api/accounts/{accountId}
     @GetMapping("/{accountId}")
-    public ResponseEntity<AccountResponse> getAccount(
-            @PathVariable String accountId) {
+    public ResponseEntity<AccountResponse> getAccount(@PathVariable String accountId) {
         AccountResponse response = accountService.getAccountById(accountId);
         return ResponseEntity.ok(response);
     }

@@ -3,7 +3,10 @@ package com.banking.transactions_api.dto;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class AccountResponse {
+    @JsonProperty("accountId")
     private String id;
     private String accountHolderName;
     private BigDecimal balance;

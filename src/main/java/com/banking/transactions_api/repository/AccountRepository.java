@@ -13,7 +13,7 @@ public class AccountRepository {
     
     private final Map<String, Account> accounts = new ConcurrentHashMap<>();
 
-    // Save an account to the in-memory store
+    // Create/Update an account
     public Account save(Account account) {
         accounts.put(account.getId(), account);
         return account;
@@ -27,25 +27,5 @@ public class AccountRepository {
     // Find all accounts
     public List<Account> findAll() {
         return new ArrayList<>(accounts.values());
-    }
-
-    // Delete an account by ID
-    public boolean deleteById(String id) {
-        return accounts.remove(id) != null;
-    }
-
-    // Check if an account exists
-    public boolean existsById(String id) {
-        return accounts.containsKey(id);
-    }
-
-    // Get the count of accounts
-    public long count() {
-        return accounts.size();
-    }
-
-    // Clear all accounts
-    public void clear() {
-        accounts.clear();
     }
 }
